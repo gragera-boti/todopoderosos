@@ -477,10 +477,10 @@
 
     let html = '';
     for (const ep of filtered) {
-      const num = epNum(ep.title);
-      const display = epDisplay(ep.title);
+      const num = epNum(ep.episode);
+      const display = epDisplay(ep.episode);
       const refs = filterRefs(ep.references);
-      html += '<div class="episode-card" data-title="' + esc(ep.title) + '">'
+      html += '<div class="episode-card" data-title="' + esc(ep.episode) + '">'
         + '<div class="episode-header">'
           + '<div class="episode-number">' + num + '</div>'
           + '<div class="episode-title">' + esc(display) + '</div>'
@@ -511,14 +511,14 @@
     if (query) {
       const q = query;
       eps = eps.filter(e => {
-        if (e.title.toLowerCase().includes(q)) return true;
+        if (e.episode.toLowerCase().includes(q)) return true;
         return e.references.some(r =>
           r.title.toLowerCase().includes(q) ||
           (r.author && r.author.toLowerCase().includes(q))
         );
       });
       eps = eps.map(e => {
-        if (e.title.toLowerCase().includes(q)) return e;
+        if (e.episode.toLowerCase().includes(q)) return e;
         return { ...e, references: e.references.filter(r =>
           r.title.toLowerCase().includes(q) ||
           (r.author && r.author.toLowerCase().includes(q))
@@ -527,7 +527,7 @@
     }
 
     // Sort by ep number desc
-    eps.sort((a, b) => epSortKey(b.title) - epSortKey(a.title));
+    eps.sort((a, b) => epSortKey(b.episode) - epSortKey(a.episode));
     return eps;
   }
 
