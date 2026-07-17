@@ -7,9 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Marcellus&display=swap" rel="stylesheet">
 <style>
-  /* ============================================================
-     RESET & BASE
-     ============================================================ */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --bg: #0a0806;
@@ -28,20 +25,13 @@
     --text-muted: #6b6258;
     --radius: 12px;
     --radius-sm: 8px;
-    --transition: .25s cubic-bezier(.4,0,.2,1);
-    --shadow: 0 1px 3px rgba(0,0,0,.4);
-    --shadow-lg: 0 8px 32px rgba(0,0,0,.6);
     --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-display: 'Marcellus', 'Inter', serif;
   }
   html { scroll-behavior: smooth; }
   body {
-    font-family: var(--font);
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
+    font-family: var(--font); background: var(--bg); color: var(--text);
+    line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh;
   }
   ::selection { background: var(--gold); color: #000; }
   ::-webkit-scrollbar { width: 8px; }
@@ -49,266 +39,137 @@
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
 
-  /* ============================================================
-     HEADER
-     ============================================================ */
+  /* HEADER */
   .header {
-    position: relative;
-    padding: 60px 24px 48px;
-    text-align: center;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,144,58,.08) 0%, transparent 70%),
-      var(--bg);
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
+    position: relative; padding: 60px 24px 48px; text-align: center;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,144,58,.08) 0%, transparent 70%), var(--bg);
+    border-bottom: 1px solid var(--border); overflow: hidden;
   }
   .header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(201,144,58,.015) 40px, rgba(201,144,58,.015) 41px);
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(201,144,58,.015) 40px, rgba(201,144,58,.015) 41px);
     pointer-events: none;
   }
   .header-inner { position: relative; max-width: 720px; margin: 0 auto; }
   .header-badge {
-    display: inline-block;
-    padding: 4px 14px;
-    border-radius: 20px;
-    background: var(--gold-dim);
-    border: 1px solid rgba(201,144,58,.2);
-    color: var(--gold-light);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
+    display: inline-block; padding: 4px 14px; border-radius: 20px;
+    background: var(--gold-dim); border: 1px solid rgba(201,144,58,.2);
+    color: var(--gold-light); font-size: 11px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px;
   }
   .header h1 {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 6vw, 3.5rem);
-    font-weight: 400;
-    letter-spacing: -.02em;
-    line-height: 1.15;
-    color: var(--text);
+    font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 400;
+    letter-spacing: -.02em; line-height: 1.15; color: var(--text);
   }
   .header h1 span { color: var(--gold-light); }
   .header p {
-    margin-top: 12px;
-    color: var(--text-dim);
-    font-size: 16px;
-    line-height: 1.5;
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 12px; color: var(--text-dim); font-size: 16px; line-height: 1.5;
+    max-width: 520px; margin-left: auto; margin-right: auto;
   }
 
-  /* ============================================================
-     STATS BAR
-     ============================================================ */
+  /* STATS */
   .stats-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 28px;
-    padding: 0 8px;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 28px; padding: 0 8px;
   }
   .stat {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    border-radius: var(--radius-sm);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--text-dim);
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border-radius: var(--radius-sm);
+    background: var(--surface); border: 1px solid var(--border);
+    font-size: 13px; color: var(--text-dim);
   }
-  .stat strong {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text);
-  }
+  .stat strong { font-size: 15px; font-weight: 700; color: var(--text); }
   .stat .emoji { font-size: 16px; }
 
-  /* ============================================================
-     CONTROLS (SEARCH + FILTERS)
-     ============================================================ */
+  /* CONTROLS */
   .controls {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(10,8,6,.92);
-    backdrop-filter: blur(16px);
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,8,6,.92); backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 24px;
+    border-bottom: 1px solid var(--border); padding: 16px 24px;
   }
   .controls-inner { max-width: 1100px; margin: 0 auto; }
-  .search-row {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-  .search-wrap {
-    flex: 1;
-    position: relative;
-  }
+  .search-row { display: flex; gap: 12px; align-items: center; }
+  .search-wrap { flex: 1; position: relative; }
   .search-wrap svg {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 18px;
-    height: 18px;
-    color: var(--text-muted);
-    pointer-events: none;
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    width: 18px; height: 18px; color: var(--text-muted); pointer-events: none;
   }
   .search-wrap input {
-    width: 100%;
-    padding: 12px 14px 12px 44px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    color: var(--text);
-    font-size: 15px;
-    font-family: inherit;
-    outline: none;
-    transition: var(--transition);
+    width: 100%; padding: 12px 14px 12px 44px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); color: var(--text);
+    font-size: 15px; font-family: inherit; outline: none;
   }
   .search-wrap input:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px var(--gold-glow);
+    border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-glow);
   }
   .search-wrap input::placeholder { color: var(--text-muted); }
   .result-count {
-    font-size: 13px;
-    color: var(--text-muted);
-    white-space: nowrap;
-    min-width: 80px;
-    text-align: right;
+    font-size: 13px; color: var(--text-muted); white-space: nowrap;
+    min-width: 90px; text-align: right;
   }
   .result-count strong { color: var(--gold-light); }
 
+  /* FILTER PILLS */
   .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 12px;
-    padding-bottom: 2px;
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px;
   }
   .filter-pill {
-    padding: 5px 14px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-dim);
-    font-size: 12px;
-    font-weight: 500;
-    font-family: inherit;
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    padding: 5px 14px; border-radius: 20px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text-dim); font-size: 12px; font-weight: 500;
+    font-family: inherit; cursor: pointer;
+    display: flex; align-items: center; gap: 4px;
   }
   .filter-pill:hover { border-color: var(--border-light); color: var(--text); }
   .filter-pill.active {
-    background: var(--gold-dim);
-    border-color: rgba(201,144,58,.35);
-    color: var(--gold-light);
+    background: var(--gold-dim); border-color: rgba(201,144,58,.35); color: var(--gold-light);
   }
-  .filter-pill .count {
-    font-size: 10px;
-    opacity: .6;
-    font-weight: 400;
-  }
-  .filter-pill-all {
-    font-weight: 600;
-  }
+  .filter-pill .count { font-size: 10px; opacity: .6; font-weight: 400; }
+  .filter-pill-all { font-weight: 600; }
 
-  /* ============================================================
-     EPISODE LIST
-     ============================================================ */
-  .episodes-wrap {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 24px;
-  }
+  /* EPISODE LIST */
+  .episodes-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
   .episodes-list { display: flex; flex-direction: column; gap: 8px; }
 
   .episode-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    transition: var(--transition);
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
   }
-  .episode-card:hover { border-color: var(--border-light); }
   .episode-card.hidden { display: none; }
 
   .episode-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 20px; cursor: pointer; user-select: none;
   }
   .episode-header:hover { background: var(--surface-hover); }
   .episode-number {
-    min-width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
     border-radius: var(--radius-sm);
-    background: var(--gold-dim);
-    border: 1px solid rgba(201,144,58,.15);
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--gold-light);
-    flex-shrink: 0;
+    background: var(--gold-dim); border: 1px solid rgba(201,144,58,.15);
+    font-size: 13px; font-weight: 700; color: var(--gold-light); flex-shrink: 0;
   }
-  .episode-title {
-    flex: 1;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.3;
-  }
-  .episode-meta {
-    font-size: 12px;
-    color: var(--text-muted);
-    white-space: nowrap;
-  }
+  .episode-title { flex: 1; font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.3; }
+  .episode-meta { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
   .episode-toggle {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    transition: var(--transition);
-    flex-shrink: 0;
+    width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); flex-shrink: 0;
   }
-  .episode-card.open .episode-toggle { transform: rotate(180deg); color: var(--gold); }
+  .episode-card.open .episode-toggle { color: var(--gold); }
 
   .episode-body {
-    max-height: 0;
     overflow: hidden;
-    transition: max-height .4s ease, padding .3s ease;
+    max-height: 0;
+    transition: max-height .35s ease;
   }
   .episode-card.open .episode-body {
-    max-height: none; /* we'll set via JS */
     padding: 0 20px 20px;
   }
 
-  /* ============================================================
-     REFERENCE CHIPS
-     ============================================================ */
+  /* REFERENCE GRID */
   .refs-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -316,115 +177,54 @@
     padding-top: 4px;
   }
   .ref-chip {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: var(--radius-sm);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    transition: var(--transition);
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; border-radius: var(--radius-sm);
+    background: var(--surface); border: 1px solid var(--border);
+    text-decoration: none; color: inherit;
   }
   .ref-chip:hover {
-    background: var(--surface-hover);
-    border-color: var(--border-light);
+    background: var(--surface-hover); border-color: var(--border-light);
     transform: translateY(-1px);
-    box-shadow: var(--shadow);
   }
-  .ref-chip:active { transform: translateY(0); }
-  .ref-cat {
-    font-size: 16px;
-    flex-shrink: 0;
-    width: 28px;
-    text-align: center;
-  }
+  .ref-cat { font-size: 16px; flex-shrink: 0; width: 28px; text-align: center; }
   .ref-info { flex: 1; min-width: 0; }
   .ref-title {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }
-  .ref-author {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 1px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+  .ref-author { font-size: 11px; color: var(--text-muted); margin-top: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .ref-link-icon {
-    flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    background: rgba(201,144,58,.1);
-    color: var(--gold);
-    font-size: 12px;
-    font-weight: 600;
+    flex-shrink: 0; width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 6px; background: rgba(201,144,58,.1);
+    color: var(--gold); font-size: 12px; font-weight: 600;
     opacity: 0;
-    transition: var(--transition);
   }
   .ref-chip:hover .ref-link-icon { opacity: 1; }
   .ref-link-icon svg { width: 14px; height: 14px; }
 
-  /* ============================================================
-     EMPTY STATE
-     ============================================================ */
-  .empty-state {
-    text-align: center;
-    padding: 60px 24px;
-    color: var(--text-muted);
-  }
+  /* EMPTY STATE */
+  .empty-state { text-align: center; padding: 60px 24px; color: var(--text-muted); }
   .empty-state .big-emoji { font-size: 48px; display: block; margin-bottom: 16px; }
   .empty-state h3 { font-size: 18px; color: var(--text-dim); margin-bottom: 8px; }
   .empty-state p { font-size: 14px; }
 
-  /* ============================================================
-     LOADING
-     ============================================================ */
-  .loading-state {
-    text-align: center;
-    padding: 80px 24px;
-  }
+  /* LOADING */
+  .loading-state { text-align: center; padding: 80px 24px; }
   .loader {
-    width: 32px;
-    height: 32px;
-    border: 3px solid var(--border);
-    border-top-color: var(--gold);
-    border-radius: 50%;
-    animation: spin .8s linear infinite;
+    width: 32px; height: 32px;
+    border: 3px solid var(--border); border-top-color: var(--gold);
+    border-radius: 50%; animation: spin .8s linear infinite;
     margin: 0 auto 16px;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
   .loading-state p { color: var(--text-muted); font-size: 14px; }
 
-  /* ============================================================
-     FOOTER
-     ============================================================ */
-  .footer {
-    text-align: center;
-    padding: 32px 24px;
-    border-top: 1px solid var(--border);
-    color: var(--text-muted);
-    font-size: 13px;
-  }
+  /* FOOTER */
+  .footer { text-align: center; padding: 32px 24px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 13px; }
   .footer a { color: var(--gold); text-decoration: none; }
   .footer a:hover { text-decoration: underline; }
 
-  /* ============================================================
-     RESPONSIVE
-     ============================================================ */
   @media (max-width: 768px) {
     .header { padding: 40px 16px 36px; }
     .controls { padding: 12px 16px; }
@@ -447,12 +247,11 @@
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
 <header class="header">
   <div class="header-inner">
     <div class="header-badge">Podcast · 2014–2026</div>
     <h1>Todopoderosos<br><span>Enciclopedia de Referencias</span></h1>
-    <p>Todas las películas, libros, canciones, cómics y obras que se han mencionado en 139 episodios del podcast. Una arqueología de la cultura pop.</p>
+    <p>Todas las películas, libros, canciones, cómics y obras mencionados en 139 episodios del podcast. Una arqueología de la cultura pop.</p>
     <div class="stats-bar" id="stats-bar">
       <div class="stat"><strong id="stat-episodes">—</strong> episodios</div>
       <div class="stat"><strong id="stat-refs">—</strong> referencias</div>
@@ -468,8 +267,7 @@
   </div>
 </header>
 
-<!-- ===== CONTROLS ===== -->
-<div class="controls" id="controls">
+<div class="controls">
   <div class="controls-inner">
     <div class="search-row">
       <div class="search-wrap">
@@ -482,7 +280,6 @@
   </div>
 </div>
 
-<!-- ===== EPISODES ===== -->
 <div class="episodes-wrap">
   <div id="loading" class="loading-state">
     <div class="loader"></div>
@@ -496,7 +293,6 @@
   </div>
 </div>
 
-<!-- ===== FOOTER ===== -->
 <footer class="footer">
   <p>
     Datos extraídos de <a href="https://podcasts.apple.com/es/podcast/todopoderosos/id953023656" target="_blank" rel="noopener">Todopoderosos</a> ·
@@ -506,332 +302,270 @@
 </footer>
 
 <script>
-// ============================================================
-// DATA
-// ============================================================
-const CATEGORY_MAP = {
-  '🎬': { label: 'Cine',     short: 'Film' },
-  '📚': { label: 'Libros',   short: 'Book' },
-  '🎵': { label: 'Música',   short: 'Music' },
-  '📖': { label: 'Cómics',   short: 'Comic' },
-  '📺': { label: 'TV',       short: 'TV' },
-  '🎨': { label: 'Arte',     short: 'Art' },
-  '🎭': { label: 'Teatro',   short: 'Theater' },
-  '🎮': { label: 'Videojuegos', short: 'Games' },
-  '🎙️': { label: 'Podcast',  short: 'Podcast' },
-  '📬': { label: 'Correo',   short: 'Mail' },
-  '👤': { label: 'Persona',  short: 'Person' },
-};
+(function(){
+  'use strict';
 
-const CATEGORY_ORDER = ['🎬','📚','🎵','📖','📺','🎨','🎭','🎮','🎙️','📬','👤'];
+  // ===== CONFIG =====
+  const CATEGORIES = [
+    { emoji: '🎬', label: 'Cine' },
+    { emoji: '📚', label: 'Libros' },
+    { emoji: '🎵', label: 'Música' },
+    { emoji: '📖', label: 'Cómics' },
+    { emoji: '📺', label: 'TV' },
+    { emoji: '🎨', label: 'Arte' },
+    { emoji: '🎭', label: 'Teatro' },
+    { emoji: '🎮', label: 'Videojuegos' },
+    { emoji: '🎙️', label: 'Podcast' },
+  ];
+  const CAT_EMOJIS = CATEGORIES.map(c => c.emoji);
 
-// ============================================================
-// STATE
-// ============================================================
-let allData = null; // { episodes: [...] }
-let activeCategories = new Set();
-let searchQuery = '';
-let expandedEpisode = null;
+  // ===== STATE =====
+  let data = null;
+  let query = '';
+  let activeCats = new Set(CAT_EMOJIS);
 
-// ============================================================
-// DOM REFS
-// ============================================================
-const $ = id => document.getElementById(id);
-const loadingEl = $('loading');
-const listEl = $('episodes-list');
-const emptyEl = $('empty-state');
-const searchInput = $('search-input');
-const filtersEl = $('filters');
-const resultCount = $('result-count');
+  // ===== DOM REFS =====
+  const $ = id => document.getElementById(id);
+  const listEl = $('episodes-list');
+  const emptyEl = $('empty-state');
+  const loadingEl = $('loading');
+  const inputEl = $('search-input');
+  const filtersEl = $('filters');
+  const countEl = $('result-count');
 
-// ============================================================
-// FETCH DATA
-// ============================================================
-async function loadData() {
-  try {
-    const resp = await fetch('referencias.json');
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    allData = await resp.json();
-    loadingEl.style.display = 'none';
-    listEl.style.display = 'flex';
-    activeCategories = new Set(CATEGORY_ORDER);
-    init();
-  } catch (err) {
-    loadingEl.innerHTML = `
-      <span style="font-size:32px;display:block;margin-bottom:12px">⚠️</span>
-      <p style="color:var(--text-dim);font-size:14px">
-        Error al cargar los datos: ${err.message}<br>
-        <span style="color:var(--text-muted);font-size:13px">¿Está el archivo <code>referencias.json</code> en el mismo directorio?</span>
-      </p>`;
+  // ===== HELPERS =====
+  function esc(s) {
+    if (!s) return '';
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
   }
-}
 
-// ============================================================
-// INIT
-// ============================================================
-function init() {
-  updateStats();
-  buildFilters();
-  render();
-  searchInput.addEventListener('input', e => {
-    searchQuery = e.target.value.toLowerCase().trim();
+  function epNum(title) {
+    const m = title.match(/#(\d+)/);
+    return m ? '#' + m[1] : 'Bonus';
+  }
+
+  function epSortKey(title) {
+    const m = title.match(/#(\d+)/);
+    return m ? parseInt(m[1],10) : 0;
+  }
+
+  function epDisplay(title) {
+    return title.replace(/^TODOPODEROSOS\s*/i, '') || title;
+  }
+
+  // ===== FETCH =====
+  async function load() {
+    try {
+      const r = await fetch('referencias.json?_t=' + Date.now());
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      data = await r.json();
+      loadingEl.style.display = 'none';
+      listEl.style.display = 'block';
+      activeCats = new Set(CAT_EMOJIS);
+      init();
+    } catch(e) {
+      loadingEl.innerHTML = '<span style="font-size:32px;display:block;margin-bottom:12px">⚠️</span><p style="color:var(--text-dim)">Error al cargar datos: ' + esc(e.message) + '</p>';
+    }
+  }
+
+  // ===== INIT =====
+  function init() {
+    updateStats();
+    buildFilters();
     render();
-  });
-}
 
-// ============================================================
-// STATS
-// ============================================================
-function updateStats() {
-  const eps = allData.episodes.length;
-  const allRefs = allData.episodes.flatMap(e => e.references);
-  $('stat-episodes').textContent = eps;
-  $('stat-refs').textContent = allRefs.length.toLocaleString();
-  for (const cat of CATEGORY_ORDER) {
-    const info = CATEGORY_MAP[cat];
-    if (!info) continue;
-    const key = 'stat-' + info.short.toLowerCase();
-    const el = $(key);
-    if (el) el.textContent = allRefs.filter(r => r.category === cat).length.toLocaleString();
+    inputEl.addEventListener('input', function() {
+      query = this.value.trim().toLowerCase();
+      render();
+    });
   }
-}
 
-// ============================================================
-// FILTERS
-// ============================================================
-function buildFilters() {
-  const allCount = allData.episodes.flatMap(e => e.references).length;
-  let html = `<button class="filter-pill filter-pill-all active" data-cat="__all__">Todos <span class="count">${allCount.toLocaleString()}</span></button>`;
-  for (const cat of CATEGORY_ORDER) {
-    const info = CATEGORY_MAP[cat];
-    if (!info) continue;
-    const count = allData.episodes.flatMap(e => e.references).filter(r => r.category === cat).length;
-    if (count === 0) continue;
-    html += `<button class="filter-pill active" data-cat="${cat}">${cat} ${info.label} <span class="count">${count.toLocaleString()}</span></button>`;
+  // ===== STATS =====
+  function updateStats() {
+    const allRefs = data.episodes.flatMap(e => e.references);
+    $('stat-episodes').textContent = data.episodes.length;
+    $('stat-refs').textContent = allRefs.length.toLocaleString();
+    const stats = {
+      film: '🎬', book: '📚', music: '🎵', comic: '📖',
+      tv: '📺', art: '🎨', theater: '🎭', games: '🎮'
+    };
+    for (const [key, emoji] of Object.entries(stats)) {
+      const el = $('stat-' + key);
+      if (el) el.textContent = allRefs.filter(r => r.category === emoji).length.toLocaleString();
+    }
   }
-  filtersEl.innerHTML = html;
-  filtersEl.addEventListener('click', e => {
+
+  // ===== FILTERS =====
+  function buildFilters() {
+    const allRefs = data.episodes.flatMap(e => e.references);
+    let html = '<button class="filter-pill filter-pill-all active" data-cat="ALL">Todos <span class="count">' + allRefs.length.toLocaleString() + '</span></button>';
+    for (const cat of CATEGORIES) {
+      const count = allRefs.filter(r => r.category === cat.emoji).length;
+      if (!count) continue;
+      html += '<button class="filter-pill active" data-cat="' + cat.emoji + '">' + cat.emoji + ' ' + cat.label + ' <span class="count">' + count.toLocaleString() + '</span></button>';
+    }
+    filtersEl.innerHTML = html;
+  }
+
+  function onFilterClick(e) {
     const btn = e.target.closest('.filter-pill');
     if (!btn) return;
     const cat = btn.dataset.cat;
-    if (cat === '__all__') {
-      // toggle "all"
-      const wasActive = btn.classList.contains('active');
-      // If already active, do nothing (or deselect all)
-      if (wasActive) return;
-      // Activate all
+    if (cat === 'ALL') {
+      if (btn.classList.contains('active')) return;
       filtersEl.querySelectorAll('.filter-pill').forEach(b => b.classList.add('active'));
-      activeCategories = new Set(CATEGORY_ORDER);
+      activeCats = new Set(CAT_EMOJIS);
     } else {
       btn.classList.toggle('active');
-      const allBtn = filtersEl.querySelector('[data-cat="__all__"]');
-      allBtn.classList.remove('active');
-      updateActiveCategories();
-    }
-    render();
-  });
-}
-
-function updateActiveCategories() {
-  activeCategories = new Set();
-  filtersEl.querySelectorAll('.filter-pill.active').forEach(b => {
-    const cat = b.dataset.cat;
-    if (cat !== '__all__') activeCategories.add(cat);
-  });
-  const allActive = CATEGORY_ORDER.every(c => activeCategories.has(c));
-  if (allActive) {
-    filtersEl.querySelector('[data-cat="__all__"]').classList.add('active');
-  }
-}
-
-// ============================================================
-// EPISODE NUMBER EXTRACTION
-// ============================================================
-function episodeSortKey(title) {
-  const m = title.match(/#(\d+)/);
-  return m ? parseInt(m[1], 10) : 0;
-}
-
-function episodeDisplay(title) {
-  // Clean up encoding issues
-  let t = title
-    .replace(/^TODOPODEROSOS\s*/, '')
-    .replace(/^Todopoderosos\s*/, '');
-  return t || title;
-}
-
-function episodeNumber(title) {
-  const m = title.match(/#(\d+)/);
-  return m ? `#${m[1]}` : 'Bonus';
-}
-
-// ============================================================
-// RENDER
-// ============================================================
-function render() {
-  const filtered = filterEpisodes();
-  const totalRefs = filtered.reduce((sum, e) => sum + e.references.length, 0);
-  resultCount.innerHTML = totalRefs > 0
-    ? `<strong>${totalRefs.toLocaleString()}</strong> refs en <strong>${filtered.length}</strong> episodios`
-    : '0 resultados';
-
-  if (filtered.length === 0) {
-    listEl.innerHTML = '';
-    emptyEl.style.display = 'block';
-    return;
-  }
-  emptyEl.style.display = 'none';
-
-  let html = '';
-  for (const ep of filtered) {
-    const num = episodeNumber(ep.title);
-    const display = episodeDisplay(ep.title);
-    const sortKey = episodeSortKey(ep.title);
-    const epId = 'ep-' + sortKey + '-' + ep.title.replace(/[^a-z0-9]/gi, '-').slice(0, 40);
-    const isOpen = expandedEpisode === epId;
-    const refs = filterReferences(ep.references);
-
-    html += `<div class="episode-card${isOpen ? ' open' : ''}" data-ep-id="${epId}">
-      <div class="episode-header" onclick="toggleEpisode('${epId}')">
-        <div class="episode-number">${num}</div>
-        <div class="episode-title">${display}</div>
-        <div class="episode-meta">${refs.length} refs</div>
-        <div class="episode-toggle">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
-        </div>
-      </div>
-      <div class="episode-body">
-        <div class="refs-grid">
-          ${refs.map(r => renderRefChip(r)).join('')}
-        </div>
-      </div>
-    </div>`;
-  }
-  listEl.innerHTML = html;
-
-  // Restore open states
-  if (expandedEpisode) {
-    const card = listEl.querySelector(`[data-ep-id="${expandedEpisode}"]`);
-    if (card) {
-      const body = card.querySelector('.episode-body');
-      body.style.maxHeight = body.scrollHeight + 'px';
-    }
-  }
-}
-
-function filterEpisodes() {
-  if (!allData) return [];
-  let eps = allData.episodes;
-
-  // Filter by category
-  if (activeCategories.size < CATEGORY_ORDER.length) {
-    eps = eps.map(ep => ({
-      ...ep,
-      references: ep.references.filter(r => activeCategories.has(r.category))
-    })).filter(ep => ep.references.length > 0);
-  }
-
-  // Filter by search query
-  if (searchQuery) {
-    const q = searchQuery;
-    eps = eps.filter(ep => {
-      const titleMatch = ep.title.toLowerCase().includes(q);
-      const refMatch = ep.references.some(r =>
-        r.title.toLowerCase().includes(q) ||
-        (r.author && r.author.toLowerCase().includes(q))
-      );
-      return titleMatch || refMatch;
-    });
-    eps = eps.map(ep => {
-      if (ep.title.toLowerCase().includes(q)) return ep;
-      return {
-        ...ep,
-        references: ep.references.filter(r =>
-          r.title.toLowerCase().includes(q) ||
-          (r.author && r.author.toLowerCase().includes(q))
-        )
-      };
-    });
-  }
-
-  // Sort by episode number desc
-  eps.sort((a, b) => episodeSortKey(b.title) - episodeSortKey(a.title));
-  return eps;
-}
-
-function filterReferences(refs) {
-  let r = refs;
-  if (activeCategories.size < CATEGORY_ORDER.length) {
-    r = r.filter(ref => activeCategories.has(ref.category));
-  }
-  if (searchQuery) {
-    const q = searchQuery;
-    r = r.filter(ref =>
-      ref.title.toLowerCase().includes(q) ||
-      (ref.author && ref.author.toLowerCase().includes(q))
-    );
-  }
-  return r;
-}
-
-function renderRefChip(ref) {
-  const amazonUrl = ref.amazon_url || '#';
-  const cleanTitle = ref.title.replace(/\s*\(.*?\)\s*$/, '').trim();
-  return `<a href="${amazonUrl}" target="_blank" rel="noopener" class="ref-chip" title="Ver en Amazon">
-    <span class="ref-cat">${ref.category || '📄'}</span>
-    <span class="ref-info">
-      <span class="ref-title">${escHtml(cleanTitle)}</span>
-      ${ref.author ? `<span class="ref-author">${escHtml(ref.author)}</span>` : ''}
-    </span>
-    <span class="ref-link-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-    </span>
-  </a>`;
-}
-
-function escHtml(s) {
-  const d = document.createElement('div');
-  d.textContent = s;
-  return d.innerHTML;
-}
-
-// ============================================================
-// TOGGLE EPISODE
-// ============================================================
-function toggleEpisode(epId) {
-  const card = listEl.querySelector(`[data-ep-id="${epId}"]`);
-  if (!card) return;
-  const body = card.querySelector('.episode-body');
-
-  if (card.classList.contains('open')) {
-    // Close
-    body.style.maxHeight = body.scrollHeight + 'px';
-    requestAnimationFrame(() => {
-      body.style.maxHeight = '0px';
-    });
-    card.classList.remove('open');
-    expandedEpisode = null;
-  } else {
-    // Close previous
-    if (expandedEpisode) {
-      const prev = listEl.querySelector(`[data-ep-id="${expandedEpisode}"]`);
-      if (prev) {
-        const prevBody = prev.querySelector('.episode-body');
-        prevBody.style.maxHeight = '0px';
-        prev.classList.remove('open');
+      filtersEl.querySelector('[data-cat="ALL"]').classList.remove('active');
+      activeCats = new Set();
+      filtersEl.querySelectorAll('.filter-pill.active').forEach(b => {
+        const c = b.dataset.cat;
+        if (c !== 'ALL') activeCats.add(c);
+      });
+      if (activeCats.size === CAT_EMOJIS.length) {
+        filtersEl.querySelector('[data-cat="ALL"]').classList.add('active');
       }
     }
-    // Open
-    card.classList.add('open');
-    body.style.maxHeight = body.scrollHeight + 'px';
-    expandedEpisode = epId;
+    render();
   }
-}
 
-// ============================================================
-// START
-// ============================================================
-loadData();
+  // ===== EPISODE TOGGLE (event delegation) =====
+  function onListClick(e) {
+    const header = e.target.closest('.episode-header');
+    if (!header) return;
+    const card = header.closest('.episode-card');
+    if (!card) return;
+    const body = card.querySelector('.episode-body');
+
+    // Close any other open episode (accordion behavior: only one open at a time)
+    if (!card.classList.contains('open')) {
+      const openCards = listEl.querySelectorAll('.episode-card.open');
+      for (const oc of openCards) {
+        oc.classList.remove('open');
+        const ob = oc.querySelector('.episode-body');
+        if (ob) ob.style.maxHeight = '0';
+      }
+    }
+
+    // Toggle this one
+    card.classList.toggle('open');
+    if (card.classList.contains('open')) {
+      body.style.maxHeight = body.scrollHeight + 'px';
+    } else {
+      body.style.maxHeight = '0';
+    }
+  }
+
+  // ===== RENDER =====
+  function render() {
+    const filtered = filterData();
+    const totalRefs = filtered.reduce((s, e) => s + e.references.length, 0);
+
+    countEl.innerHTML = totalRefs
+      ? '<strong>' + totalRefs.toLocaleString() + '</strong> en <strong>' + filtered.length + '</strong> episodio' + (filtered.length !== 1 ? 's' : '')
+      : '0 resultados';
+
+    if (!filtered.length) {
+      listEl.innerHTML = '';
+      emptyEl.style.display = 'block';
+      return;
+    }
+    emptyEl.style.display = 'none';
+
+    let html = '';
+    for (const ep of filtered) {
+      const num = epNum(ep.title);
+      const display = epDisplay(ep.title);
+      const refs = filterRefs(ep.references);
+      html += '<div class="episode-card" data-title="' + esc(ep.title) + '">'
+        + '<div class="episode-header">'
+          + '<div class="episode-number">' + num + '</div>'
+          + '<div class="episode-title">' + esc(display) + '</div>'
+          + '<div class="episode-meta">' + refs.length + ' ref' + (refs.length !== 1 ? 's' : '') + '</div>'
+          + '<div class="episode-toggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></div>'
+        + '</div>'
+        + '<div class="episode-body">'
+          + '<div class="refs-grid">'
+            + refs.map(refChip).join('')
+          + '</div>'
+        + '</div>'
+      + '</div>';
+    }
+    listEl.innerHTML = html;
+  }
+
+  function filterData() {
+    if (!data) return [];
+    let eps = data.episodes;
+
+    // Category filter
+    if (activeCats.size < CAT_EMOJIS.length) {
+      eps = eps.map(e => ({ ...e, references: e.references.filter(r => activeCats.has(r.category)) }))
+               .filter(e => e.references.length > 0);
+    }
+
+    // Text search
+    if (query) {
+      const q = query;
+      eps = eps.filter(e => {
+        if (e.title.toLowerCase().includes(q)) return true;
+        return e.references.some(r =>
+          r.title.toLowerCase().includes(q) ||
+          (r.author && r.author.toLowerCase().includes(q))
+        );
+      });
+      eps = eps.map(e => {
+        if (e.title.toLowerCase().includes(q)) return e;
+        return { ...e, references: e.references.filter(r =>
+          r.title.toLowerCase().includes(q) ||
+          (r.author && r.author.toLowerCase().includes(q))
+        )};
+      });
+    }
+
+    // Sort by ep number desc
+    eps.sort((a, b) => epSortKey(b.title) - epSortKey(a.title));
+    return eps;
+  }
+
+  function filterRefs(refs) {
+    let r = refs;
+    if (activeCats.size < CAT_EMOJIS.length) {
+      r = r.filter(ref => activeCats.has(ref.category));
+    }
+    if (query) {
+      const q = query;
+      r = r.filter(ref =>
+        ref.title.toLowerCase().includes(q) ||
+        (ref.author && ref.author.toLowerCase().includes(q))
+      );
+    }
+    return r;
+  }
+
+  function refChip(ref) {
+    const url = ref.amazon_url || '#';
+    const title = ref.title.replace(/\s*\(.*?\)\s*$/, '').trim();
+    return '<a href="' + url + '" target="_blank" rel="noopener" class="ref-chip" title="Ver en Amazon">'
+      + '<span class="ref-cat">' + (ref.category || '📄') + '</span>'
+      + '<span class="ref-info">'
+        + '<span class="ref-title">' + esc(title) + '</span>'
+        + (ref.author ? '<span class="ref-author">' + esc(ref.author) + '</span>' : '')
+      + '</span>'
+      + '<span class="ref-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>'
+    + '</a>';
+  }
+
+  // ===== EVENT WIRING =====
+  filtersEl.addEventListener('click', onFilterClick);
+  listEl.addEventListener('click', onListClick);
+
+  // ===== GO =====
+  load();
+})();
 </script>
 </body>
 </html>
