@@ -251,17 +251,15 @@
   <div class="header-inner">
     <div class="header-badge">Podcast · 2014–2026</div>
     <h1>Todopoderosos<br><span>Enciclopedia de Referencias</span></h1>
-    <p>Todas las películas, libros, canciones, cómics y obras mencionados en 139 episodios del podcast. Una arqueología de la cultura pop.</p>
+    <p>Todas las películas, series, libros, cómics, canciones y videojuegos mencionados en 139 episodios del podcast. Una arqueología de la cultura pop.</p>
     <div class="stats-bar" id="stats-bar">
       <div class="stat"><strong id="stat-episodes">—</strong> episodios</div>
       <div class="stat"><strong id="stat-refs">—</strong> referencias</div>
       <div class="stat stat-hidden-mobile"><span class="emoji">🎬</span><strong id="stat-film">—</strong></div>
-      <div class="stat stat-hidden-mobile"><span class="emoji">📚</span><strong id="stat-book">—</strong></div>
-      <div class="stat stat-hidden-mobile"><span class="emoji">🎵</span><strong id="stat-music">—</strong></div>
-      <div class="stat stat-hidden-mobile"><span class="emoji">📖</span><strong id="stat-comic">—</strong></div>
       <div class="stat stat-hidden-mobile"><span class="emoji">📺</span><strong id="stat-tv">—</strong></div>
-      <div class="stat stat-hidden-mobile"><span class="emoji">🎨</span><strong id="stat-art">—</strong></div>
-      <div class="stat stat-hidden-mobile"><span class="emoji">🎭</span><strong id="stat-theater">—</strong></div>
+      <div class="stat stat-hidden-mobile"><span class="emoji">📚</span><strong id="stat-book">—</strong></div>
+      <div class="stat stat-hidden-mobile"><span class="emoji">📖</span><strong id="stat-comic">—</strong></div>
+      <div class="stat stat-hidden-mobile"><span class="emoji">🎵</span><strong id="stat-music">—</strong></div>
       <div class="stat stat-hidden-mobile"><span class="emoji">🎮</span><strong id="stat-games">—</strong></div>
     </div>
   </div>
@@ -308,14 +306,11 @@
   // ===== CONFIG =====
   const CATEGORIES = [
     { emoji: '🎬', label: 'Cine' },
-    { emoji: '📚', label: 'Libros' },
-    { emoji: '🎵', label: 'Música' },
-    { emoji: '📖', label: 'Cómics' },
     { emoji: '📺', label: 'TV' },
-    { emoji: '🎨', label: 'Arte' },
-    { emoji: '🎭', label: 'Teatro' },
+    { emoji: '📚', label: 'Libros' },
+    { emoji: '📖', label: 'Cómics' },
+    { emoji: '🎵', label: 'Música' },
     { emoji: '🎮', label: 'Videojuegos' },
-    { emoji: '🎙️', label: 'Podcast' },
   ];
   const CAT_EMOJIS = CATEGORIES.map(c => c.emoji);
 
@@ -388,8 +383,8 @@
     $('stat-episodes').textContent = data.episodes.length;
     $('stat-refs').textContent = allRefs.length.toLocaleString();
     const stats = {
-      film: '🎬', book: '📚', music: '🎵', comic: '📖',
-      tv: '📺', art: '🎨', theater: '🎭', games: '🎮'
+      film: '🎬', tv: '📺', book: '📚', comic: '📖',
+      music: '🎵', games: '🎮'
     };
     for (const [key, emoji] of Object.entries(stats)) {
       const el = $('stat-' + key);
