@@ -186,7 +186,15 @@
     background: var(--surface-hover); border-color: var(--border-light);
     transform: translateY(-1px);
   }
-  .ref-cat { font-size: 16px; flex-shrink: 0; width: 28px; text-align: center; }
+  .ref-cat {
+    font-size: 16px; flex-shrink: 0; width: 44px; height: 56px;
+    text-align: center; display: flex; align-items: center; justify-content: center;
+    border-radius: 4px; overflow: hidden;
+  }
+  .ref-cover {
+    width: 44px; height: 56px; object-fit: cover; display: block;
+    border-radius: 3px;
+  }
   .ref-info { flex: 1; min-width: 0; }
   .ref-title {
     font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3;
@@ -544,8 +552,12 @@
   function refChip(ref) {
     const url = ref.amazon_url || '#';
     const title = ref.title.replace(/\s*\(.*?\)\s*$/, '').trim();
+    const cat = ref.category || '📄';
+    const cover = ref.image
+      ? '<img class="ref-cover" src="' + ref.image + '" alt="" loading="lazy" crossorigin>'
+      : cat;
     return '<a href="' + url + '" target="_blank" rel="noopener" class="ref-chip" title="Ver en Amazon">'
-      + '<span class="ref-cat">' + (ref.category || '📄') + '</span>'
+      + '<span class="ref-cat">' + cover + '</span>'
       + '<span class="ref-info">'
         + '<span class="ref-title">' + esc(title) + '</span>'
         + (ref.author ? '<span class="ref-author">' + esc(ref.author) + '</span>' : '')
