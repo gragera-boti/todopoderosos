@@ -212,6 +212,12 @@
     font-size: 13px; color: var(--text-muted); margin-top: 3px;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
+  .ref-desc {
+    font-size: 11px; color: var(--text-muted); margin-top: 2px;
+    opacity: .7; line-height: 1.35;
+    display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
   .ref-link-icon {
     flex-shrink: 0; width: 34px; height: 34px;
     display: flex; align-items: center; justify-content: center;
@@ -578,6 +584,7 @@
       + '<span class="ref-info">'
         + '<span class="ref-title">' + esc(title) + '</span>'
         + (ref.author ? '<span class="ref-author">' + esc(ref.author) + '</span>' : '')
+        + (ref.desc ? '<span class="ref-desc">' + esc(ref.desc) + '</span>' : '')
       + '</span>'
       + '<span class="ref-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>'
     + '</a>';
