@@ -172,13 +172,13 @@
   /* REFERENCE GRID */
   .refs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 6px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 8px;
     padding-top: 4px;
   }
   .ref-chip {
-    display: flex; align-items: center; gap: 14px;
-    padding: 12px 14px; border-radius: var(--radius-sm);
+    display: flex; align-items: center; gap: 18px;
+    padding: 16px 18px; border-radius: var(--radius);
     background: var(--surface); border: 1px solid var(--border);
     text-decoration: none; color: inherit;
   }
@@ -187,36 +187,40 @@
     transform: translateY(-1px);
   }
   .ref-cat {
-    flex-shrink: 0; width: 56px; height: 72px;
+    flex-shrink: 0; width: 88px; height: 120px;
     text-align: center; display: flex; align-items: center; justify-content: center;
-    border-radius: 5px; overflow: hidden; position: relative;
+    border-radius: 6px; overflow: hidden; position: relative;
     background: var(--card);
   }
   .ref-cover {
-    width: 56px; height: 72px; object-fit: cover; display: block;
-    border-radius: 4px;
+    width: 88px; height: 120px; object-fit: cover; display: block;
+    border-radius: 5px;
   }
   .ref-cat-badge {
     position: absolute; top: -2px; left: -2px;
-    font-size: 11px; background: var(--bg);
+    font-size: 13px; background: var(--bg);
     border: 1px solid var(--border); border-radius: 4px;
-    padding: 1px 3px; line-height: 1;
+    padding: 2px 4px; line-height: 1;
     box-shadow: 0 1px 3px rgba(0,0,0,.5);
   }
   .ref-info { flex: 1; min-width: 0; }
   .ref-title {
-    font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3;
+    font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.35;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }
-  .ref-author { font-size: 11px; color: var(--text-muted); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ref-author {
+    font-size: 13px; color: var(--text-muted); margin-top: 3px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
   .ref-link-icon {
-    flex-shrink: 0; width: 30px; height: 30px;
+    flex-shrink: 0; width: 34px; height: 34px;
     display: flex; align-items: center; justify-content: center;
-    border-radius: 6px; background: rgba(201,144,58,.1);
-    color: var(--gold); font-size: 12px; font-weight: 600;
+    border-radius: 8px; background: rgba(201,144,58,.1);
+    color: var(--gold); font-size: 14px; font-weight: 600;
     opacity: 0;
   }
   .ref-chip:hover .ref-link-icon { opacity: 1; }
+  .ref-link-icon svg { width: 16px; height: 16px; }
 
   /* EMPTY STATE */
   .empty-state { text-align: center; padding: 60px 24px; color: var(--text-muted); }
@@ -257,6 +261,7 @@
   }
   @media (max-width: 480px) {
     .stats-bar .stat-hidden-mobile { display: none; }
+    .ref-cover { width: 64px; height: 88px; }
   }
 </style>
 </head>
@@ -566,7 +571,7 @@
       coverHtml = '<img class="ref-cover" src="' + ref.image + '" alt="" loading="lazy" crossorigin>'
         + '<span class="ref-cat-badge">' + cat + '</span>';
     } else {
-      coverHtml = '<span style="font-size:22px">' + cat + '</span>';
+      coverHtml = '<span style="font-size:32px">' + cat + '</span>';
     }
     return '<a href="' + url + '" target="_blank" rel="noopener" class="ref-chip" title="Ver en Amazon">'
       + '<span class="ref-cat">' + coverHtml + '</span>'
