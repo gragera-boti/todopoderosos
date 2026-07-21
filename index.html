@@ -912,9 +912,15 @@
       return;
     }
 
-    const sameAuthor = flatRefs.filter(f =>
-      f.ref.author && f.ref.author === ref.author && f.ref.id !== ref.id
-    );
+    // Deduplicate by (title, category) — same item can appear in multiple episodes
+    const seen = new Set();
+    const sameAuthor = flatRefs.filter(f => {
+      if (!f.ref.author || f.ref.author !== ref.author || f.ref.id === ref.id) return false;
+      const key = f.ref.title + '|' + f.ref.category;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
 
     if (sameAuthor.length === 0) {
       modalRelated.style.display = 'none';
